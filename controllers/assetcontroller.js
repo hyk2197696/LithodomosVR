@@ -13,3 +13,15 @@ exports.list_get = function(req, res, next){
         res.render('homepage', {title: 'Lithodomos Asset Management System', assetnum: row.countAsset});
     });
 }
+
+exports.asset_get = function(req, res, next){
+    var query = con.query("select *  from sys.asset where idAsset = " + req.query.id);
+    query.on('error', function(err) {
+        throw err;
+    });
+
+    query.on('result', function(row) {
+        console.log(row);
+        res.render('asset', {title: row.name , asset: row});
+    });
+}

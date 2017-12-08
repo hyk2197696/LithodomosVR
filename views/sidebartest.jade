@@ -1,0 +1,24 @@
+doctype html
+html(lang="en", xml:lang="en", xmlns="http://www.w3.org/1999/xhtml")
+    head
+        title= title
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+        //link(rel='stylesheet', href='../public/stylesheets/bootstrap.min.css')
+        //script(src='../public/javascripts/bootstrap.min.js')
+        //script(src='../public/javascripts/jquery-3.2.1.min.js')
+        link(rel='stylesheet', href='/stylesheets/style.css')
+    body
+        .module
+            .feed
+                a(href="http://feeds.feedburner.com/nodeslide", title="Subscribe to my feed", rel="alternate", type="application/rss+xml")
+                    img(src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png", alt="", style="border:0")
+                a(href="http://feeds.feedburner.com/nodeslide")
+                    img(src="http://feeds.feedburner.com/~fc/nodeslide?bg=FF6400&amp;fg=FFFFFF&amp;anim=0", height="26", width="88", style="border:0", alt="")
+
+        .module
+            h4 About NodeSlide
+            NodeSlide gathers all the latest node.js slides and presentations in one convenient place!

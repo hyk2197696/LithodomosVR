@@ -31,17 +31,23 @@ exports.search_post = function(req, res, next) {
     else {
         var query = con.query("select *  from sys.asset where idAsset = " + req.body.id );
         var rowCount = 0;
-
+        var resultJson = []
         query.on('error', function(err) { throw err; })
              .on('result',function(row){
                 rowCount ++;
                 console.log(row);
-                res.render('asset_list', { list_asset : row});
+                 resultJson.push(row);
+
+                //res.render('asset_list', { list_asset : row});
              })
              .on('end',function(){
                  //if the result has 0 row, jump to empty page
                  if(rowCount == 0) {
                      res.render('success', {title: 'empty', massage: 'empty!'});
+                 }
+                 else {
+                     console.log(resultJson);
+                     res.render('asset_list', { list_asset : resultJson})
                  }
              })
     }

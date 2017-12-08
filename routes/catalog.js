@@ -14,7 +14,9 @@ router.get('/assetsearch', search_controller.search_get);
 
 router.post('/assetsearch', search_controller.search_post);
 
-router.get('.assetlist', asset_controller.list_get);
+router.get('/assetlist', asset_controller.list_get);
+
+router.get('/asset', asset_controller.asset_get);
 
 router.get('/assetcreate', create_controller.create_get);
 
@@ -22,7 +24,7 @@ router.get('/assetalter', alter_controller.alter_get);
 
 router.get('/assetdelete', delete_controller.delete_get);
 
-
+router.get('/sidebartest',homepage_controller.sidebar)
 
 
 

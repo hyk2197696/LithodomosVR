@@ -23,3 +23,7 @@ exports.index = function(req, res, next){
     //     res.render('homepage',{title : 'Lithodomos Asset Management System', assetnum: result[0] });
     // });
 }
+
+exports.sidebar = function(req, res, next) {
+    res.render('sidebartest', {title: 'Lithodomos Asset Management System'});
+}
