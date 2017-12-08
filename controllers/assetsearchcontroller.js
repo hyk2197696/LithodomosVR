@@ -1,0 +1,49 @@
+var con = require('./databasecontroller')
+var app = require('../app')
+var json = require('json')
+
+exports.search_get = function(req, res, next) {
+    res.render('search_form', { title: 'Search Asset' });
+};
+
+
+
+// Handle Asset search on POST
+exports.search_post = function(req, res, next) {
+
+    //Check that the id field is not empty
+    req.checkBody('id', 'ID required').notEmpty();
+
+    //Trim and escape the name field.
+    req.sanitize('id').escape();
+    req.sanitize('id').trim();
+
+    //Run the validators
+    var errors = req.validationErrors();
+
+
+
+    if (errors) {
+        //If there are errors render the form again, passing the previously entered values and errors
+        res.render('search_form', { title: 'Search Asset', id:req.body.id, errors: errors});
+        return;
+    }
+    else {
+        var query = con.query("select *  from sys.asset where idAsset = " + req.body.id );
+        var rowCount = 0;
+
+        query.on('error', function(err) { throw err; })
+             .on('result',function(row){
+                rowCount ++;
+                console.log(row);
+                res.render('asset_list', { list_asset : row});
+             })
+             .on('end',function(){
+                 //if the result has 0 row, jump to empty page
+                 if(rowCount == 0) {
+                     res.render('success', {title: 'empty', massage: 'empty!'});
+                 }
+             })
+    }
+
+};

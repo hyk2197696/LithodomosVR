@@ -1,0 +1,14 @@
+extends layout
+
+block content
+
+    h1 Asset list:
+
+    div(style='margin-left:20px;margin-top:20px')
+
+
+
+        dl
+        each asset in list_asset
+            dt
+                a(href='#') #{asset}
