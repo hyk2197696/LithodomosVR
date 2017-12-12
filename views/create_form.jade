@@ -1,0 +1,57 @@
+extends sidebartest
+
+block content
+
+
+    h1.text-center #{title}
+    #test 0
+
+    form(method='POST' action='')
+        div.form-group
+            label(for='asset_name') Asset Name:
+            input#asset_name.form-control(type='text', placeholder='Input Asset Name' name='asset_name' required='true'   )
+        div.form-group.row
+            label.col-sm-12(for='project_name') Project Name:
+            div.col-sm-9
+                input#project_name.form-control(type='text', placeholder='Input Project name ' name='project_name' required='true' oninput = "selectproject()"  )
+            div.col-sm-3
+                a(href="/catalog/assetsearch" class="btn btn-default btn-md")
+                    span Create new project
+
+        div.form-group
+            label(for='date_of_birth') Date of birth:
+            input#date_of_birth.form-control(type='text' ,data-provide='typeahead', data-items='4' )
+
+            label(for='exampleFormControlSelect1') Example select
+            select#exampleFormControlSelect1.form-control
+
+
+
+
+        button.btn.btn-primary(type='submit') Submit
+    if errors
+        ul
+            for error in errors
+                li!= error.msg
+
+    script.
+        var subjects = ['PHP', 'MySQL', 'SQL', 'PostgreSQL', 'HTML', 'CSS', 'HTML5', 'CSS3', 'JSON'];
+        var data
+        $('#date_of_birth').typeahead({source: subjects});
+
+
+
+        function selectproject() {
+            var req = new XMLHttpRequest();
+
+            req.open("GET", "/dynamic/selectproject?name=" + document.getElementById("project_name").value);
+            req.onreadystatechange = function () {
+                if (req.readyState == 4) {
+                    //$('#project_name').typeahead(req.responseText);
+                    $("#test").html(req.responseText);
+                    data = req.responseText
+                }
+            }
+            req.send();
+
+        }

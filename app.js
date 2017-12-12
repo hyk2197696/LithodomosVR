@@ -9,7 +9,7 @@ var expressValidator = require('express-validator');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var catalog = require('./routes/catalog');  //Import routes for "catalog" area of site
-
+var dynamic = require('./routes/dynamic');  //Import routes for "dynamic"
 
 var mysql = require('mysql');
 // var con = mysql.createConnection({
@@ -38,6 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/catalog', catalog);  // Add catalog routes to middleware chain.
+app.use('/dynamic', dynamic);  // Add dynamic routes to middleware chain.
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

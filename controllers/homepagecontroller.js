@@ -15,6 +15,7 @@ exports.index = function(req, res, next){
     });
 
 
+
     // con.query("select count(*) from sys.asset", function (err, result, fields) {
     //     console.log(result);
     //     console.log(result[0]);
@@ -24,6 +25,9 @@ exports.index = function(req, res, next){
     // });
 }
 
-exports.sidebar = function(req, res, next) {
-    res.render('sidebartest', {title: 'Lithodomos Asset Management System'});
+exports.test = function(req, res, next) {
+    res.render('test', {title: 'Lithodomos Asset Management System'});
 }
+
+
+
