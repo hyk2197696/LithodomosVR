@@ -12,6 +12,9 @@ var content_controller = require('../controllers/contentcreatecontroller');
 
 router.get('/selectproject',create_controller.select_project);
 
+router.get('/selectallproject',create_controller.select_all_project);
+
+router.get('/selectallreference',create_controller.select_all_reference);
 
 
 module.exports = router;

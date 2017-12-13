@@ -21,6 +21,8 @@ router.get('/asset', asset_controller.asset_get);
 
 router.get('/assetcreate', create_controller.create_get);
 
+router.post('/assetcreate', create_controller.create_post);
+
 router.get('/assetalter', alter_controller.alter_get);
 
 router.get('/assetdelete', delete_controller.delete_get);
@@ -30,5 +32,11 @@ router.get('/contentcreate',content_controller.content_create_get);
 router.post('/contentcreate',content_controller.content_create_post);
 
 router.get('/test',homepage_controller.test);
+
+router.get('/success',homepage_controller.success_get);
+
+router.post('/test',homepage_controller.test_post);
+
+router.get('/assetdownload',asset_controller.asset_download);
 
 module.exports = router;

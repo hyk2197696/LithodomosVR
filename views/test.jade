@@ -1,9 +1,7 @@
-extends sidebartest
-
+extend sidebartest
 block content
-    .well
-        input#search.span3(type='text', data-provide='typeahead', data-items='4')
-
-    script.
-        var subjects = ['PHP', 'MySQL', 'SQL', 'PostgreSQL', 'HTML', 'CSS', 'HTML5', 'CSS3', 'JSON'];
-        $('#search').typeahead({source: subjects})
+    form(action='test', method='post', enctype='multipart/form-data')
+        input(type='file', name='file_upload', required='true')
+        input#textinput(type='text', name='textinput')
+        br
+        input(type='submit')
