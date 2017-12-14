@@ -1,7 +1,12 @@
+/**
+ * Controller for asset search
+ */
 var con = require('./databasecontroller')
 var app = require('../app')
 var json = require('json')
 
+
+//get method for asset search
 exports.search_get = function(req, res, next) {
     res.render('search_form', { title: 'Search Asset' });
 };

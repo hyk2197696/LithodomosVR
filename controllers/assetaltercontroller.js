@@ -1,7 +1,10 @@
+/**
+ * Controller for asset alter
+ */
 var con = require('./databasecontroller')
 var app = require('../app')
 
-
+//asset alter page get method
 exports.alter_get = function(req, res, next){
     var sql = "select sys.asset.id, " +
                     "sys.asset.name," +
@@ -14,6 +17,8 @@ exports.alter_get = function(req, res, next){
                     "left join sys.reference " +
                         "on sys.asset.reference = sys.reference.idReference " +
                     "where sys.asset.id =" + req.query.id;
+
+    //select all the imformation of the specfic asset
     console.log('new query :' );
     console.log(sql);
 
@@ -36,6 +41,7 @@ exports.alter_get = function(req, res, next){
     });
 }
 
+//post method for asset alter
 exports.alter_post = function(req, res, next) {
 
         sql = 'insert into sys.asset values \( default, \'' + fields.asset_name + '\'\, ';
@@ -55,7 +61,9 @@ exports.alter_post = function(req, res, next) {
 
         var oldpath = files.file_upload.path;
         var newpath = 'C:/Users/Render4/WebstormProjects/lithodomosVR/file/' + files.file_upload.name;
+
         sql += '\'' + newpath + '\'\)';
+        //insert the altered asset
         console.log(sql);
 
 

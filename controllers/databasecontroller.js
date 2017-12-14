@@ -1,3 +1,6 @@
+/**
+ * Controller for accessing MYSQL database
+ */
 var mysql = require('mysql')
 
 var con = mysql.createConnection({

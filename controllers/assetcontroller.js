@@ -1,7 +1,11 @@
+/**
+ * Controller for asset display
+ */
+
 var con = require('./databasecontroller')
 var app = require('../app')
 
-
+//get method for asset list display
 exports.list_get = function(req, res, next){
     var query = con.query("select count(*) as countAsset from sys.asset");
     query.on('error', function(err) {
@@ -14,8 +18,11 @@ exports.list_get = function(req, res, next){
     });
 }
 
+//get method for asset display
 exports.asset_get = function(req, res, next){
     sql = "select *  from sys.asset where id = " + req.query.id;
+
+    //select all the information of the specific asset
     console.log("new query:");
     console.log(sql);
 
@@ -30,6 +37,7 @@ exports.asset_get = function(req, res, next){
     });
 }
 
+//method for asset downloading
 exports.asset_download = function(req, res,next) {
     var sql = 'select directory from sys.asset where id = ' + req.query.id;
     console.log(sql);
