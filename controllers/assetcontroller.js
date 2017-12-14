@@ -15,7 +15,11 @@ exports.list_get = function(req, res, next){
 }
 
 exports.asset_get = function(req, res, next){
-    var query = con.query("select *  from sys.asset where idAsset = " + req.query.id);
+    sql = "select *  from sys.asset where id = " + req.query.id;
+    console.log("new query:");
+    console.log(sql);
+
+    var query = con.query(sql);
     query.on('error', function(err) {
         throw err;
     });
@@ -27,7 +31,7 @@ exports.asset_get = function(req, res, next){
 }
 
 exports.asset_download = function(req, res,next) {
-    var sql = 'select directory from sys.asset where idAsset = ' + req.query.id;
+    var sql = 'select directory from sys.asset where id = ' + req.query.id;
     console.log(sql);
     var query = con.query(sql);
     query.on('result', function (row){

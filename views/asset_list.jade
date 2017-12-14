@@ -11,5 +11,5 @@ block content
         dl
         each asset in list_asset
             dt
-                - var asset_href = '/catalog/asset?id=' + asset.idAsset
-                a(href= asset_href) #{asset.assetName}
+                - var asset_href = '/catalog/asset?id=' + asset.id
+                a(href= asset_href) #{asset.name}

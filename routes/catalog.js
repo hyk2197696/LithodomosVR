@@ -8,12 +8,17 @@ var alter_controller = require('../controllers/assetaltercontroller');
 var delete_controller = require('../controllers/assetdeletecontroller');
 var asset_controller = require('../controllers/assetcontroller');
 var content_controller = require('../controllers/contentcreatecontroller');
+var directory_controller = require('../controllers/directorycontroller');
 /* GET catalog home page. */
 router.get('/', homepage_controller.index);
 
 router.get('/assetsearch', search_controller.search_get);
 
 router.post('/assetsearch', search_controller.search_post);
+
+router.get('/assetfind', directory_controller.find_get);
+
+router.post('/assetfind', directory_controller.find_post);
 
 router.get('/assetlist', asset_controller.list_get);
 
@@ -24,6 +29,8 @@ router.get('/assetcreate', create_controller.create_get);
 router.post('/assetcreate', create_controller.create_post);
 
 router.get('/assetalter', alter_controller.alter_get);
+
+router.post('/assetalter', alter_controller.alter_post);
 
 router.get('/assetdelete', delete_controller.delete_get);
 

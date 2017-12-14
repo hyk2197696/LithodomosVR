@@ -29,7 +29,12 @@ exports.search_post = function(req, res, next) {
         return;
     }
     else {
-        var query = con.query("select *  from sys.asset where idAsset = " + req.body.id );
+        var sql = "select *  from sys.asset where id = " + req.body.id ;
+
+        console.log("new query:")
+        console.log(sql);
+
+        var query = con.query(sql);
         var rowCount = 0;
         var resultJson = []
         query.on('error', function(err) { throw err; })

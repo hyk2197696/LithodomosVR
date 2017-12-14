@@ -60,7 +60,7 @@ function find_all_reference_from_db(callback){
 }
 
 exports.select_project = function(req, res){
-    console.log("into dynamic test\n");
+
     find_project_from_db(req.query.name, function(results){
         res.end(JSON.stringify(results));
     });
