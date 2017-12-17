@@ -44,6 +44,8 @@ block content
     script.
         var project = []
         var references = []
+
+        //load all data before the loading the page
         $(document).ready(function(){
             getallproject();
             //getallreference();
@@ -52,6 +54,7 @@ block content
 
         $('#project_name').typeahead({source: project});
 
+        //select all project from the database
         function getallproject() {
             var req = new XMLHttpRequest();
 
@@ -68,6 +71,7 @@ block content
             req.send();
         }
 
+        //select all reference and form the selection box
         function getallreference() {
             var req = new XMLHttpRequest();
 
