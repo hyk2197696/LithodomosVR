@@ -4,7 +4,7 @@ block content
 
 
     h1.text-center #{title}
-    #test #{project}
+    em(onclick = "showDirectory()") www
 
     form(method='POST' action='' enctype='multipart/form-data')
         div.form-group
@@ -16,8 +16,30 @@ block content
             div.col-sm-9
                 input#project_name.form-control(type='text' ,placeholder='Input Project Name', name='project_name', data-provide='typeahead', data-items='4'  )
             div.col-sm-3
-                a(href="/catalog/contentcreate?content_name=project" class="btn btn-default btn-md")
-                    span Create new project
+                //a(href="/catalog/contentcreate?content_name=project" class="btn btn-default btn-md")
+                //    span Create new project
+
+                button.btn.btn-default.btn-md(data-toggle='modal', data-target='#myModal',onclick='showDirectory();' )
+                    |Create new project
+                    // Modal
+                #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+                    .modal-dialog
+                        .modal-content
+                            .modal-header
+                                button.close(type='button', data-dismiss='modal', aria-hidden='true')
+                                    | ×
+                                h4#myModalLabel.modal-title.text-center
+                                    | Create a new project
+                            .modal-body
+
+                                div.form-group
+                                    label(for='name') name:
+                                    input#name.form-control(type='text', placeholder='Project name', name='name', required = 'true')
+
+                            .modal-footer
+                                button.btn.btn-default(type='button', data-dismiss='modal')
+                                    | close
+                                button.btn.btn-primary(type='submit' onclick ="exist()") Submit
 
         div.form-group.row
             label.col-sm-12(for='project_name') Reference:
@@ -30,6 +52,33 @@ block content
             div.col-sm-3
                 a(href="/catalog/contentcreate?content_name=reference" class="btn btn-default btn-md")
                     span Create new reference
+
+        div.form-group.row
+            label.col-sm-12(for='project_name') Directory:
+            div.col-sm-1
+                button.btn.btn-default.btn-md(data-toggle='modal', data-target='#directory_selector' )
+                    | choose
+
+                #directory_selector.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+                    .modal-dialog
+                        .modal-content
+                            .modal-header
+                                button.close(type='button', data-dismiss='modal', aria-hidden='true')
+                                    | ×
+                                h4#directory_selector_header.modal-title.text-center
+                                    | Select a directory
+                            #directory_table.modal-body
+
+                            .modal-footer
+                                button.btn.btn-default(type='button', data-dismiss='modal')
+                                    | close
+                                button.btn.btn-primary(data-toggle='modal', data-target='#myModal') Submit
+            div.col-sm-11
+                .input-group
+                    .input-group-addon @
+                    input#directory.form-control(type='text', placeholder='Please input a folder name', name='durectory', required = 'true',disabled)
+
+
 
         div.form-group
             label Upload asset:
@@ -91,5 +140,36 @@ block content
             req.send();
         }
 
+        function exist() {
+
+            var req = new XMLHttpRequest();
+
+            req.open("get", "/dynamic/contentcreate?name=" + $("#name").val() );
+            req.onreadystatechange = function () {
+                if (req.readyState == 4) {
+
+                    if (req.responseText == 'success') {
+                        alert('New folder creation success');
+                        window.location.reload();
+                    } else {
+                        alert(req.responseText);
+                    }
+                    //references = JSON.parse(req.responseText);
+                    //alert(references);
+                    //$("#test").html(req.responseText);
+                    //var responds = JSON.parse(req.responseText);
+                    //for (i = 0; i < responds.length; i++) {
+                    //    references.push(responds[i].name);
+                    //}
+                }
+            }
+            req.send();
+        }
+
+        function showDirectory(){
 
 
+
+
+
+        }

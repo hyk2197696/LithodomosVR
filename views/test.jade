@@ -1,18 +1,21 @@
 extend sidebartest
 block content
-    button.btn.btn-info.btn-lg( class = 'glyphicon glyphicon-plus', data-toggle='modal', data-target='#myModal' )
+    button.btn.btn-info.btn-lg( class = 'glyphicon glyphicon-plus', data-toggle='modal', data-target='#choose_directory' )
 
     // 模态框（Modal）
     link(rel='stylesheet', href='http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css')
     script(src='http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js')
     script(src='http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js')
-    #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+
+
+
+    #choose_directory.modal.fade(tabindex='-1', role='dialog', aria-labelledby='choose_directory', aria-hidden='true')
         .modal-dialog
             .modal-content
                 .modal-header
                     button.close(type='button', data-dismiss='modal', aria-hidden='true')
                         | ×
-                    h4#myModalLabel.modal-title
+                    h4.modal-title
                         | title of the modal
                 #content.modal-body
 
